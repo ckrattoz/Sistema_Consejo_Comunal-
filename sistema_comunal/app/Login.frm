@@ -5,6 +5,7 @@ Begin VB.Form Login
    ClientLeft      =   120
    ClientTop       =   450
    ClientWidth     =   9450
+   Icon            =   "Login.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   7200
    ScaleWidth      =   9450
@@ -155,7 +156,7 @@ Begin VB.Form Login
       Height          =   7215
       Index           =   1
       Left            =   0
-      Picture         =   "Login.frx":0000
+      Picture         =   "Login.frx":1085C
       Stretch         =   -1  'True
       Top             =   0
       Width           =   9465
