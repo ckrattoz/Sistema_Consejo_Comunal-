@@ -199,6 +199,12 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub Command1_Click()
+Unload Me
+Load cResidencia
+cResidencia.Show
+End Sub
+
 Private Sub Form_Load()
 Me.Move (Screen.Width - Width) / 2, (Screen.Height - Height) / 2
 End Sub

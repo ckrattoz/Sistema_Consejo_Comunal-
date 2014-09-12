@@ -42,7 +42,9 @@ Begin VB.Form Login
       EndProperty
       ForeColor       =   &H000000C0&
       Height          =   495
+      IMEMode         =   3  'DISABLE
       Left            =   3360
+      PasswordChar    =   "*"
       TabIndex        =   3
       Top             =   5280
       Width           =   3015
