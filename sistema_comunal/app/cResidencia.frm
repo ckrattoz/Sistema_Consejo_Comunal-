@@ -368,9 +368,11 @@ If (txtNombre.Text = "") Or (Masc.Value = False And Feme.Value = False) Then
     Set objWord = New Word.Application
     objWord.Visible = True
     If Masc.Value = True Then
-        objWord.Documents.Open App.Path & "\templates\CONSTANCIA_RESIDENCIA_H.doc"
+        FileCopy App.Path & "\templates\CONSTANCIA_RESIDENCIA_H.doc", App.Path & "\tmp\CONSTANCIA_RESIDENCIA_H.doc"
+        objWord.Documents.Open App.Path & "\tmp\CONSTANCIA_RESIDENCIA_H.doc"
     Else
-        objWord.Documents.Open App.Path & "\templates\CONSTANCIA_RESIDENCIA_M.doc"
+        FileCopy App.Path & "\templates\CONSTANCIA_RESIDENCIA_M.doc", App.Path & "\tmp\CONSTANCIA_RESIDENCIA_M.doc"
+        objWord.Documents.Open App.Path & "\tmp\CONSTANCIA_RESIDENCIA_M.doc"
     End If
     objWord.Documents(1).Bookmarks("nombre").Range = UCase(txtNombre.Text)
     objWord.Documents(1).Bookmarks("nacionalidad").Range = UCase(txtNacionalidad.Text)
@@ -379,8 +381,16 @@ If (txtNombre.Text = "") Or (Masc.Value = False And Feme.Value = False) Then
     objWord.Documents(1).Bookmarks("procedente").Range = UCase(txtProcedencia.Text)
     objWord.Documents(1).Bookmarks("direccion").Range = UCase(txtDireccion.Text)
     objWord.Documents(1).Bookmarks("hace").Range = txtAnosViviendo.Text
+    objWord.Documents(1).Bookmarks("diasFecha").Range = Module1.getDay()
+    objWord.Documents(1).Bookmarks("mesFecha").Range = Module1.getMonth()
+    objWord.Documents(1).Bookmarks("anoFecha").Range = Module1.getYear()
     
 End If
+End Sub
+
+
+Private Sub Form_Load()
+Me.Move (Screen.Width - Width) / 2, (Screen.Height - Height) / 2
 End Sub
 
 Private Sub txtEdad_KeyPress(KeyAscii As Integer)

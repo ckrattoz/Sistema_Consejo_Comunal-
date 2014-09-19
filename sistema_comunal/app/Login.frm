@@ -169,18 +169,21 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Function validaLogin()
+    If txtuser.Text = "" Then
+    MsgBox "El campo de usuario no puede estar vacio.", vbInformation
+    txtuser.SetFocus
+    Exit Function
+    ElseIf txtpassword.Text = "" Then
+    MsgBox "El campo de contrseña no puede estar vacio"
+    txtpassword.SetFocus
+    Exit Function
+    Else
+    Call login
+    End If
+End Function
 Private Sub Command1_Click()
-If txtuser.Text = "" Then
-MsgBox "El campo de usuario no puede estar vacio.", vbInformation
-txtuser.SetFocus
-Exit Sub
-ElseIf txtpassword.Text = "" Then
-MsgBox "El campo de contrseña no puede estar vacio"
-txtpassword.SetFocus
-Exit Sub
-Else
-Call login
-End If
+  validacion = validaLogin()
 End Sub
 
 Private Sub login()
@@ -192,7 +195,7 @@ MsgBox "El nombre de usuario no es valido. Por favor intente de nuevo.", vbInfor
 txtuser.SetFocus
 Exit Sub
 Else
-If txtpassword.Text = rs!password Then
+If txtpassword.Text = rs!Password Then
 Unload Me
 Load Principal
 Principal.Show
@@ -209,4 +212,18 @@ End Sub
 
 Private Sub Form_Load()
 Me.Move (Screen.Width - Width) / 2, (Screen.Height - Height) / 2
+End Sub
+
+
+
+Private Sub txtpassword_KeyUp(KeyCode As Integer, Shift As Integer)
+If KeyCode = 13 Then
+    validacion = validaLogin()
+End If
+End Sub
+
+Private Sub txtuser_KeyUp(KeyCode As Integer, Shift As Integer)
+If KeyCode = 13 Then
+    validacion = validaLogin()
+End If
 End Sub
